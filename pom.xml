@@ -8,7 +8,7 @@
     GroupID og artifactID til ditt prosjekt. Husk å endre dette til riktige verdier for ditt prosjekt!!
     -->
     <groupId>no.ntnu.idata2001</groupId>
-    <artifactId>PlayingCard</artifactId>
+    <artifactId>Card</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -34,7 +34,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.3</version>
                 <configuration>
-                    <mainClass>idata2001.javafxtest.HelloWorld</mainClass>
+                    <mainClass>Game.App</mainClass>
                 </configuration>
             </plugin>
         </plugins>
@@ -51,7 +51,7 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>${javafx.version}</version>
+            <version>12</version>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>

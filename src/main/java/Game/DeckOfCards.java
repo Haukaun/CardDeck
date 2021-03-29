@@ -9,7 +9,19 @@ public class DeckOfCards {
     private final char[] suit = new char[]{'S', 'H', 'D', 'C'};
     private final Integer[] face = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
     private ArrayList<Card> deck = new ArrayList();
-    private Image backOfCardImage = new Image("./Images/gray_back.png");
+    private Image backOfCardImage;
+
+
+
+    public DeckOfCards(ArrayList<Card> deck) {
+        this.deck = deck;
+        backOfCardImage = new Image("./images/gray_back.png");
+
+    }
+
+    public DeckOfCards() {
+
+    }
 
     public ArrayList<Card> getDeck() {
         return this.deck;
@@ -27,8 +39,6 @@ public class DeckOfCards {
         this.backOfCardImage = backOfCardImage;
     }
 
-    public DeckOfCards() {
-    }
 
     public void addCards() {
         for(int i = 0; i < this.suit.length; ++i) {
