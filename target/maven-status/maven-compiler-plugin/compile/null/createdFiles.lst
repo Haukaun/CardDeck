@@ -1,0 +1,6 @@
+Game\playerHand.class
+Game\App.class
+Game\Card.class
+Game\GameClient.class
+module-info.class
+Game\DeckOfCards.class

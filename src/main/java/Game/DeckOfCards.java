@@ -3,24 +3,25 @@ package Game;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Random;
+
 import javafx.scene.image.Image;
 
 public class DeckOfCards {
     private final char[] suit = new char[]{'S', 'H', 'D', 'C'};
     private final Integer[] face = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
     private ArrayList<Card> deck = new ArrayList();
-    private Image backOfCardImage;
+    private Random random;
 
 
 
-    public DeckOfCards(ArrayList<Card> deck) {
-        this.deck = deck;
-        backOfCardImage = new Image("./images/gray_back.png");
 
-    }
 
     public DeckOfCards() {
-
+        this.deck = deck;
+        random = new Random();
+        addCards();
+        shuffelCards();
     }
 
     public ArrayList<Card> getDeck() {
@@ -29,14 +30,6 @@ public class DeckOfCards {
 
     public void setDeck(ArrayList<Card> deck) {
         this.deck = deck;
-    }
-
-    public Image getBackOfCardImage() {
-        return this.backOfCardImage;
-    }
-
-    public void setBackOfCardImage(Image backOfCardImage) {
-        this.backOfCardImage = backOfCardImage;
     }
 
 
@@ -55,11 +48,11 @@ public class DeckOfCards {
         String output = "";
 
         for(int i = 0; i < this.deck.size(); ++i) {
-            output = output + ((Card)this.deck.get(i)).asString() + "\n";
+            output = output + ((Card)this.deck.get(i)).getAsString() + "\n";
         }
-
         return output;
     }
+
 
     public void shuffelCards() {
         this.deck.forEach((card) -> {
@@ -71,10 +64,11 @@ public class DeckOfCards {
         if (card > this.deck.size()) {
             throw new IllegalArgumentException();
         } else {
+
             ArrayList<Card> drawnCard = new ArrayList();
 
             for(int cardsDrawn = 0; cardsDrawn < card; ++cardsDrawn) {
-                Card cardDrawn = this.deck.get(cardsDrawn);
+                Card cardDrawn = this.deck.get(random.nextInt(deck.size()));
                 drawnCard.add(cardDrawn);
                 this.deck.remove(cardDrawn);
             }
