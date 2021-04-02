@@ -58,6 +58,7 @@ public class DeckOfCards {
         });
     }
 
+
     public Collection<Card> dealHand(int card) throws IllegalArgumentException {
         if (card > this.deck.size()) {
             throw new IllegalArgumentException();

@@ -45,6 +45,10 @@ public class GameClient {
         updatePathImages();
         labelsUpdate();
 
+        if(deck.getDeck().size() <= 5){
+            deck.addCards();
+        }
+
     }
 
     public void ClearPane(){
