@@ -4,6 +4,7 @@ package Game;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.TilePane;
@@ -21,27 +22,70 @@ public class GameClient {
     private final playerHand hand = new playerHand();
     public TilePane deckImageView;
     public Button draw5CardsButton;
-    private Button ShuffleButton;
+    public Label flushLabel;
+    public Label heartLabel;
+    public Label queenLabel;
+    public Button highCard;
+    public Button sumCard;
 
+
+    public void getSumofCards(){
+        sumCard.setOnAction(actionEvent -> alertBox.display("Sum of Cards", "Sum of cards is:\n          "+hand.sumOfCards()+""));
+    }
+
+    public void getHighCard(){
+        highCard.setOnAction(actionEvent -> alertBox.display("HighCard", "The highest Card:\n           "+hand.highCard()+""));
+    }
 
 
     public void Draw5Button() {
         deck.dealHand(5).forEach(hand::addCard);
-        draw5CardsButton.setText("Redraw");
-        draw5CardsButton.setOnAction(actionEvent -> redrawButton());
-        updateImages();
+        draw5CardsButton.setText("ReDraw");
+        draw5CardsButton.setOnAction(actionEvent -> ClearPane());
+        updatePathImages();
+        labelsUpdate();
 
     }
 
-
-    public void redrawButton(){
+    public void ClearPane(){
         hand.getHand().clear();
         deckImageView.getChildren().clear();
-        deck.dealHand(5).forEach(hand::addCard);
+    }
+
+    public void checkFlush(){
+        if(hand.checkFlush()){
+            flushLabel.setText("Congrats, you managed to draw a Flush!");
+        } else {
+            flushLabel.setText("No Flush! Keep trying!");
+        }
+    }
+
+    public void checkQueen(){
+        if(hand.checkQueenOfSpade()){
+            queenLabel.setText("Queen of Spade in Display!");
+        } else {
+            queenLabel.setText("No Queen of Spade drawn!");
+        }
     }
 
 
-    public void updateImages() {
+
+
+    public void labelsUpdate(){
+        checkFlush();
+        checkQueen();
+
+        heartLabel.setText(hand.getHeartAsString());
+    }
+
+
+
+
+
+
+
+
+    public void updatePathImages() {
 
         ArrayList<Card> cards = hand.getHand();
 
@@ -52,10 +96,15 @@ public class GameClient {
 
             ImageView imageView = new ImageView(path);
             imageView.setPreserveRatio(true);
-            imageView.setFitWidth(100);
+            imageView.setFitWidth(137);
+            imageView.setFitHeight(246);
             this.deckImageView.getChildren().add(imageView);
         });
     }
+
+
+
+
 
 
 

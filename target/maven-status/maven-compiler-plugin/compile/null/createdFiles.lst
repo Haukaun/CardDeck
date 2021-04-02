@@ -1,6 +1,8 @@
 Game\playerHand.class
+Game\main.class
 Game\App.class
 Game\Card.class
 Game\GameClient.class
+Game\alertBox.class
 module-info.class
 Game\DeckOfCards.class

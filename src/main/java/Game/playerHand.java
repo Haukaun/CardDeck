@@ -52,7 +52,7 @@ public class playerHand {
     }
 
     public Integer highCard(){
-       return this.hand.stream().map(Card::getFace).mapToInt(Integer::intValue).sum();
+       return this.hand.stream().map(Card::getFace).max(Integer::compare).get();
     }
 
     /**
@@ -69,7 +69,7 @@ public class playerHand {
         if (checkFlush.size() == getHand().size()){
             return true;
         } else {
-            throw new IllegalArgumentException("Something went wrong!");
+            return false;
         }
     }
 
@@ -79,21 +79,36 @@ public class playerHand {
      * @throws IllegalArgumentException
      */
     public String getHeartAsString() throws IllegalArgumentException{
+
         StringBuilder sb = new StringBuilder();
+
         getHand().stream()
                 .filter(card -> card.getSuit() == 'H')
                 .forEach(card -> sb.append(card.getAsString()).append(" "));
 
-        if(sb.length() < 1)
+        if(sb.length() < 2)
             sb.append("No Hearts");
 
         return sb.toString().trim();
     }
 
 
-
     public String getHandAsString() {
-        return getHand().stream().map(Card::getAsString).collect(Collectors.joining(""));
+        return getHand().stream().map(Card::getAsString).collect(Collectors.joining(" "));
+    }
+
+    public boolean checkQueenOfSpade(){
+
+
+        ArrayList a = getHand().stream()
+                .filter(card -> card.getAsString().equals("12S"))
+                .collect(Collectors.toCollection(ArrayList::new));
+
+        if (a.isEmpty()){
+            return false;
+        } else {
+            return true;
+        }
     }
 
 }

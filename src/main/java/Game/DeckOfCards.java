@@ -10,21 +10,19 @@ import javafx.scene.image.Image;
 public class DeckOfCards {
     private final char[] suit = new char[]{'S', 'H', 'D', 'C'};
     private final Integer[] face = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
-    private ArrayList<Card> deck = new ArrayList();
+    private ArrayList<Card> deck;
     private Random random;
 
 
 
-
-
     public DeckOfCards() {
-        this.deck = deck;
+        this.deck = new ArrayList<>();
         random = new Random();
         addCards();
         shuffelCards();
     }
 
-    public ArrayList<Card> getDeck() {
+    public ArrayList<Card> getDeck(){
         return this.deck;
     }
 
@@ -64,7 +62,6 @@ public class DeckOfCards {
         if (card > this.deck.size()) {
             throw new IllegalArgumentException();
         } else {
-
             ArrayList<Card> drawnCard = new ArrayList();
 
             for(int cardsDrawn = 0; cardsDrawn < card; ++cardsDrawn) {
