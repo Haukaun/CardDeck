@@ -5,8 +5,10 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Random;
 
-import javafx.scene.image.Image;
 
+/**
+ * Deck of cards adds 52 cards. Shuffles the cards and has the option to print out all of the 52 cards.
+ */
 public class DeckOfCards {
     private final char[] suit = new char[]{'S', 'H', 'D', 'C'};
     private final Integer[] face = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
@@ -14,7 +16,9 @@ public class DeckOfCards {
     private Random random;
 
 
-
+    /**
+     * Instantiates a new Deck of cards and shuffels the cards.
+     */
     public DeckOfCards() {
         this.deck = new ArrayList<>();
         random = new Random();
@@ -22,15 +26,28 @@ public class DeckOfCards {
         shuffelCards();
     }
 
+    /**
+     * Get deck array list.
+     *
+     * @return the array list
+     */
     public ArrayList<Card> getDeck(){
         return this.deck;
     }
 
+    /**
+     * Sets deck.
+     *
+     * @param deck the deck
+     */
     public void setDeck(ArrayList<Card> deck) {
         this.deck = deck;
     }
 
 
+    /**
+     * Add cards to the deck.
+     */
     public void addCards() {
         for(int i = 0; i < this.suit.length; ++i) {
             String value = String.valueOf(this.suit[i]);
@@ -42,6 +59,11 @@ public class DeckOfCards {
 
     }
 
+    /**
+     * Deck info. Prints all of the cards, if needed.
+     *
+     * @return the string
+     */
     public String deckInfo() {
         String output = "";
 
@@ -52,6 +74,9 @@ public class DeckOfCards {
     }
 
 
+    /**
+     * Shuffel cards.
+     */
     public void shuffelCards() {
         this.deck.forEach((card) -> {
             Collections.shuffle(this.deck);
@@ -59,6 +84,13 @@ public class DeckOfCards {
     }
 
 
+    /**
+     * Deal hand collection.
+     *
+     * @param card the card
+     * @return the collection
+     * @throws IllegalArgumentException the illegal argument exception
+     */
     public Collection<Card> dealHand(int card) throws IllegalArgumentException {
         if (card > this.deck.size()) {
             throw new IllegalArgumentException();

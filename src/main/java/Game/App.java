@@ -8,6 +8,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * The type App.
+ */
 public class App extends Application {
 
     private static Scene scene;
@@ -19,6 +22,12 @@ public class App extends Application {
         stage.show();
     }
 
+    /**
+     * Sets root.
+     *
+     * @param fxml the fxml
+     * @throws IOException the io exception
+     */
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
@@ -28,6 +37,11 @@ public class App extends Application {
         return fxmlLoader.load();
     }
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         launch(args);
     }
