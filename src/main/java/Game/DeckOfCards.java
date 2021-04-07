@@ -17,9 +17,9 @@ public class DeckOfCards {
 
 
     /**
-     * Instantiates a new Deck of cards and shuffels the cards.
+     * Instantiates a new Deck of cards and shuffles the cards.
      */
-    public DeckOfCards() {
+    public DeckOfCards() throws IllegalArgumentException {
         this.deck = new ArrayList<>();
         random = new Random();
         addCards();

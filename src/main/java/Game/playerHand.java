@@ -2,6 +2,7 @@ package Game;
 
 
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 /**
@@ -32,14 +33,14 @@ public class playerHand {
     /**
      * Add card.
      *
-     * @param card the card
+     * @param card the cardthis.deck = new ArrayList<>()
      * @throws NullPointerException the null pointer exception
      */
     public void addCard(Card card) throws NullPointerException{
         if(card != null){
             hand.add(card);
         } else {
-            throw new NullPointerException();
+            throw new NullPointerException("Card added cant be null");
         }
     }
 
@@ -68,7 +69,7 @@ public class playerHand {
      * @return returns true is hand contains flush or flase is not.
      * @throws IllegalArgumentException the illegal argument exception
      */
-    public boolean checkFlush()throws IllegalArgumentException{
+    public boolean checkFlush()throws NoSuchElementException {
         //Creating an arraylist checkFlush that has filtered out the cards that don't have
         //the same suit as the first card in the hand.
         ArrayList<Card> checkFlush = getHand().stream()
